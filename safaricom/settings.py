@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'daraja',
+    'drf_yasg',
+    'rest_framework',
+    'rest_framework.authtoken',
+
 ]
 
 MIDDLEWARE = [
@@ -105,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -121,3 +128,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Documentation from Safaricom Daraja
+# Consumer Keys from .env
+CONSUMER_KEY = config('CONSUMER_KEY')
+SECRET_KEY = config('SECRET_KEY')
+API_RESOURCE_URL = config('API_RESOURCE_URL')
+ACCESS_TOKEN_URL = config('ACCESS_TOKEN_URL')
