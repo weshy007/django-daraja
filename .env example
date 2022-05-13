@@ -1,0 +1,7 @@
+# You get this from the Safaricom Developer https://developer.safaricom.co.ke/
+CONSUMER_KEY=''
+SECRET_KEY=''
+LIPA_NA_MPESA_PASSKEY=''
+BUSINESS_SHORT_CODE=''
+API_RESOURCE_URL='https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+ACCESS_TOKEN_URL='https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
