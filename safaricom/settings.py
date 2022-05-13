@@ -11,7 +11,13 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
+from decouple import config, Csv
+
+MODE=config("MODE", default="dev")
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xc)9dc0o$@^$8l+!-+w4yjy7#!=m6ws4n-+#fj!5dh39$+&%5f'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -44,6 +45,10 @@ INSTALLED_APPS = [
     'rest_framework',
 
 ]
+
+SWAGGER_SETTINGS = {
+   'USE_SESSION_AUTH': False
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,7 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Documentation from Safaricom Daraja
 # Consumer Keys from .env
 CONSUMER_KEY = config('CONSUMER_KEY')
-SECRET_KEY = config('SECRET_KEY')
+CONSUMER_SECRET_KEY = config('SECRET_KEY')
 API_RESOURCE_URL = config('API_RESOURCE_URL')
 ACCESS_TOKEN_URL = config('ACCESS_TOKEN_URL')
 LIPA_NA_MPESA_PASSKEY = config('LIPA_NA_MPESA_PASSKEY')
