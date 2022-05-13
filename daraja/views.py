@@ -3,6 +3,7 @@ import json
 import requests
 from django.conf import settings
 from rest_framework.generics import GenericAPIView
+from rest_framework.response import Response
 
 from .access_token_encoding import generate_password
 from .date_formatting import formatted_date
@@ -24,7 +25,7 @@ class InitiateSTKPush(GenericAPIView):
 
         payment_response = self.initiate_mpesa_stk(amount=amount, phone_number=phone_number)
 
-        return payment_response
+        return Response(payment_response)
 
     def initiate_mpesa_stk(self, amount:str, phone_number:str) -> dict:
         access_token = generate_token()
@@ -50,15 +51,14 @@ class InitiateSTKPush(GenericAPIView):
         }
 
         response = requests.post(
-            settings.API_RESPONSE_URL, headers=headers, json=payload
-        )
+            settings.API_RESOURCE_URL, headers=headers, json=payload)
 
         string_response = response.text
         string_object = json.loads(string_response)
 
         if 'errorCode' in string_object:
             print('ERROR', string_object)
-            # PASSED
+            # PASSED REQUEST
             return string_object
         else:
             merchant_request_id = string_object["MerchantRequestID"]

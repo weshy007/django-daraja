@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'daraja',
     'drf_yasg',
     'rest_framework',
-    'rest_framework.authtoken',
 
 ]
 

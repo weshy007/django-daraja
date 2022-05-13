@@ -6,6 +6,6 @@ def generate_password(dates):
     data_to_encode = settings.BUSINESS_SHORT_CODE+settings.LIPA_NA_MPESA_PASSKEY+dates 
 
     encoded_string = base64.b64encode(data_to_encode.encode())
-    decode_passkey = encoded_string.decode('utf-8')
+    decoded_passkey = encoded_string.decode('utf-8')
     
-    return decode_passkey
+    return decoded_passkey
