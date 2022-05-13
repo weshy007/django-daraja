@@ -28,6 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -136,7 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Documentation from Safaricom Daraja
 # Consumer Keys from .env
 CONSUMER_KEY = config('CONSUMER_KEY')
-CONSUMER_SECRET_KEY = config('SECRET_KEY')
+CONSUMER_SECRET_KEY = config('CONSUMER_SECRET_KEY')
 API_RESOURCE_URL = config('API_RESOURCE_URL')
 ACCESS_TOKEN_URL = config('ACCESS_TOKEN_URL')
 LIPA_NA_MPESA_PASSKEY = config('LIPA_NA_MPESA_PASSKEY')
