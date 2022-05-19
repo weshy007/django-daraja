@@ -56,7 +56,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -169,3 +169,6 @@ API_RESOURCE_URL = config('API_RESOURCE_URL')
 ACCESS_TOKEN_URL = config('ACCESS_TOKEN_URL')
 LIPA_NA_MPESA_PASSKEY = config('LIPA_NA_MPESA_PASSKEY')
 BUSINESS_SHORT_CODE = config('BUSINESS_SHORT_CODE')
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
